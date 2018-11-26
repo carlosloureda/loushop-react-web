@@ -78,7 +78,13 @@ para que realmente se una a la DB y podamos trabajar, es un poco liante esta par
       - withApollo nos da el ApolloClient en next con lo que nos beneficiamos del poder de
       renderizado desde el backend con Next.js
 
-- Vamos a usar Cloudinary para subir las imagenes a un servidor remoto, podemos
+      - Creamos components/Items, vamos a usar Query y gql para hacer consultas.
+      - Se usaban HOC para hacer las consultas hasta ahora (en plan export default
+      withItems(items)) pero lo que se está haciendo más popular es el renderProp.
+      - Vamos a montar también Item para mostrar la parte bonita de Items
+      - Next ahora mismo no tiene 'pretty urls' que lo iran metiendo ... sino paquetes
+
+* Vamos a usar Cloudinary para subir las imagenes a un servidor remoto, podemos
   usar el nuestro o Amazon S3. Le gusta al creador.
   TODO: Estudiar funcionamiento y precios. Tenemos 10GB for free. Y referral program
   Metemos un preset para aplicar transformaciones a las imagenes
