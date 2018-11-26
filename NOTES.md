@@ -66,3 +66,19 @@ para que realmente se una a la DB y podamos trabajar, es un poco liante esta par
       const Query = {
             items: forwardTo("db")
       }
+
+## Módulo 4. Client Side GraphQL
+
+- Apollo nos va a usar Redux, nos va a hacer el caching de los datos, va a manejar
+  las mutaciones y las queries montadas con GraphQL. Maneja errores y loading UI
+  states.
+
+      - 'apollo-boost': Trae muchas librerías que vas a querer usar con apollo-client.
+      Cache, y esas cosas ...
+      - withApollo nos da el ApolloClient en next con lo que nos beneficiamos del poder de
+      renderizado desde el backend con Next.js
+
+- Vamos a usar Cloudinary para subir las imagenes a un servidor remoto, podemos
+  usar el nuestro o Amazon S3. Le gusta al creador.
+  TODO: Estudiar funcionamiento y precios. Tenemos 10GB for free. Y referral program
+  Metemos un preset para aplicar transformaciones a las imagenes
