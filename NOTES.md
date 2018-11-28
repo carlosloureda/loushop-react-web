@@ -77,12 +77,25 @@ para que realmente se una a la DB y podamos trabajar, es un poco liante esta par
       Cache, y esas cosas ...
       - withApollo nos da el ApolloClient en next con lo que nos beneficiamos del poder de
       renderizado desde el backend con Next.js
-
       - Creamos components/Items, vamos a usar Query y gql para hacer consultas.
       - Se usaban HOC para hacer las consultas hasta ahora (en plan export default
       withItems(items)) pero lo que se está haciendo más popular es el renderProp.
       - Vamos a montar también Item para mostrar la parte bonita de Items
       - Next ahora mismo no tiene 'pretty urls' que lo iran metiendo ... sino paquetes
+
+- 4.3. Creating itenms with Mutations
+
+  - Creamos el componente CreateItem, contamos cosas sobre los eventos (el
+    handler al usar arrow funcions no necesita el bind)
+  - Ahora tenemos que usar GraphQL para guardar nuestros datos: Escribimos una 'query'
+    apara la mutacion (CREATE_ITEM_MUTATION), nos recomienda exportarlos (named exports),
+    vamos al backend y miramos en schema.graphql para ver como es el método y copiar sus parametros.
+    Creamos un método wrapper que le pasa la varibale a la mutacion y luego retornamos los campos
+    que queramos.
+
+    Ahora tenemos que exponer esa mutacion con nuestro Componente Mutation. Wes prefiere mandar
+    las variables en el mismo Mutation. El hijo de esta Mutation es una funcion.
+    Implicit return ( ()). Metemos el Formulario dentro del componente Mutation
 
 * Vamos a usar Cloudinary para subir las imagenes a un servidor remoto, podemos
   usar el nuestro o Amazon S3. Le gusta al creador.
