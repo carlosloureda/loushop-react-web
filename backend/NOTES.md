@@ -97,7 +97,11 @@ para que realmente se una a la DB y podamos trabajar, es un poco liante esta par
     las variables en el mismo Mutation. El hijo de esta Mutation es una funcion.
     Implicit return ( ()). Metemos el Formulario dentro del componente Mutation
 
-* Vamos a usar Cloudinary para subir las imagenes a un servidor remoto, podemos
+-4.5 Uploading Images
+
+- Vamos a usar Cloudinary para subir las imagenes a un servidor remoto, podemos
   usar el nuestro o Amazon S3. Le gusta al creador.
   TODO: Estudiar funcionamiento y precios. Tenemos 10GB for free. Y referral program
-  Metemos un preset para aplicar transformaciones a las imagenes
+  Metemos un preset para aplicar transformaciones a las imagenes.
+
+  Vamos a subir un método que nos maneje todas las subidas de nuestras imágenes
