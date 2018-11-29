@@ -165,4 +165,21 @@ variables={{
 > Opcion 1. usar el refetchQuery, pero no sabriamos que query usar ..
 > Borrar de cache los elementos del cache y meterlos (por el momento no
 > podemos borrar solo ciertos elementos del caché y borrar todos es horrible ...
-> ) //TODO: En el futuro lo resolveremos xD
+> ) //TODO En el futuro lo resolveremos asdasd
+
+## Módulo 5. Client Side GraphQL
+
+### 5.1 User Signup and Permission Flow
+
+- Añadimos atributos al type USer en datamodel.prisma, por ejemplo los Permisos,
+  vamos a usar los enumerandos de graphQL. Actualizamos prisma y creamos un nuevo
+  método signup en schema.graphql.
+  TODO: Va a user cookies para mandar el JWT. Podriamos usar local storage en vez
+  de cookies ( lo hace asi porque quiere que se haga server side rendering the
+  la parte del loggedin y con local storage no se hace automatico). Las activa
+  como middleware de express.
+
+  Para añadir un permiso usamos: permissions: { set: ["USER"] } --> asi porque
+  es un enum y hay que usar el set.
+
+  //TODO: fix the playground
