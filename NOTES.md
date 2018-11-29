@@ -126,3 +126,21 @@ Creamos la página UpdateItem para actualizar cosas TODO: Actualizar imagenes
   cambiar el título de la página con sideeffects (con next) Nos cuenta como sobreescribir
   los Head con next. Podemos tener múltiples tags de Head con los que vamos sobreescribiendo
   el Head definido en Meta.
+
+-4.9 Pagination
+Creamos un componente y nos habla del backend de las consultas itemsConnection que es
+la que nos da mas informacion para la paginacion: Nos devuelve el ItemConnection:
+"""Information to aid in pagination."""
+pageInfo: PageInfo!
+
+"""A list of edges."""
+edges: [ItemEdge]!
+aggregate: AggregateItem!
+}
+pageInfo y edges es bueno para infinite pagination
+//TODO: Hacer infinite pagination
+En la pagiancion en los botones de Link nos dice que pongamos un 'prefetch'
+para que nos haga un pre-render de las previous y next pages, (solo funciona
+en producción)
+Hemos conseguido que funcione nuestro pagiandor con las urls pero no nos
+actualiza los items, eso en el siguiente punto.
