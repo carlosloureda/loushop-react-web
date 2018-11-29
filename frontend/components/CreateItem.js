@@ -83,7 +83,7 @@ class CreateItem extends Component {
   render() {
     const { item } = this.state;
     return (
-      <Mutation mutation={CREATE_ITEM_MUTATION} variables={item}>
+      <Mutation refetchQueries={} mutation={CREATE_ITEM_MUTATION} variables={item}>
         {/* {(createItem, payload) => { */}
         {/* {(createItem, {loading, error, called, data}) => { */}
         {(createItem, { loading, error }) => (
