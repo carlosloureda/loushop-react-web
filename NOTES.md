@@ -144,3 +144,25 @@ para que nos haga un pre-render de las previous y next pages, (solo funciona
 en producción)
 Hemos conseguido que funcione nuestro pagiandor con las urls pero no nos
 actualiza los items, eso en el siguiente punto.
+
+-4.10: Pagination and Cache Invalidation
+Tenemos que tocar en el backend el query de items. Arreglamos para pasar
+skip, first y poder paginar.
+Cuando añadimos un nuevo item, no lo vemos en el catálogo porque ya está cacheada
+la página, necesitamos invalidar el caché cuando pase eso. (lo mismo va pasar con el
+borrado):
+fetchPolicy="network-only" --> Eso hace que nunca use el caché (no mola porque perdemos
+el caché).
+
+<Query
+query={ALL_ITEMS_QUERY}
+fetchPolicy="network-only"
+variables={{
+      skip: this.props.page * perPage - perPage,
+      first: perPage
+}} >
+
+> Opcion 1. usar el refetchQuery, pero no sabriamos que query usar ..
+> Borrar de cache los elementos del cache y meterlos (por el momento no
+> podemos borrar solo ciertos elementos del caché y borrar todos es horrible ...
+> ) //TODO: En el futuro lo resolveremos xD
