@@ -118,3 +118,11 @@ Creamos la página UpdateItem para actualizar cosas TODO: Actualizar imagenes
   de la caché. Vamos a usar uno de los 3 argumentos de la mutacion, update
   TODO: Read Apollo doc for updating cache
   TODO: borrar la imagen del servidor cuando borramos un artículo
+
+- 4.8 Display Items
+  Sabemos que nos falta el detalle de un item (lo vemos al crear uno nuevo y ver
+  el error en la nueva página de redirección). El backend lo tenemos listo.
+  Creamos el item.js y el SingleItem, no tiene muchas novedades. Nos indica como
+  cambiar el título de la página con sideeffects (con next) Nos cuenta como sobreescribir
+  los Head con next. Podemos tener múltiples tags de Head con los que vamos sobreescribiendo
+  el Head definido en Meta.
