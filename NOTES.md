@@ -111,3 +111,10 @@ Hacemos el formulario de subida de imagees (TODO: comprobar y añadir muchos cam
 -4.6 Uploading Items with Queries and Mutations - Creamos un query y una mutacion
 en el backend para item y updateItem.
 Creamos la página UpdateItem para actualizar cosas TODO: Actualizar imagenes
+
+-4.7 Delete
+
+- Vemos que con Apollo se ha borrado del cache un elemento pero tenemos que borrarlo
+  de la caché. Vamos a usar uno de los 3 argumentos de la mutacion, update
+  TODO: Read Apollo doc for updating cache
+  TODO: borrar la imagen del servidor cuando borramos un artículo
