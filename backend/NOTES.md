@@ -66,3 +66,103 @@ para que realmente se una a la DB y podamos trabajar, es un poco liante esta par
       const Query = {
             items: forwardTo("db")
       }
+
+## Módulo 4. Client Side GraphQL
+
+- Apollo nos va a usar Redux, nos va a hacer el caching de los datos, va a manejar
+  las mutaciones y las queries montadas con GraphQL. Maneja errores y loading UI
+  states.
+
+      - 'apollo-boost': Trae muchas librerías que vas a querer usar con apollo-client.
+      Cache, y esas cosas ...
+      - withApollo nos da el ApolloClient en next con lo que nos beneficiamos del poder de
+      renderizado desde el backend con Next.js
+      - Creamos components/Items, vamos a usar Query y gql para hacer consultas.
+      - Se usaban HOC para hacer las consultas hasta ahora (en plan export default
+      withItems(items)) pero lo que se está haciendo más popular es el renderProp.
+      - Vamos a montar también Item para mostrar la parte bonita de Items
+      - Next ahora mismo no tiene 'pretty urls' que lo iran metiendo ... sino paquetes
+
+- 4.3. Creating itenms with Mutations
+
+  - Creamos el componente CreateItem, contamos cosas sobre los eventos (el
+    handler al usar arrow funcions no necesita el bind)
+  - Ahora tenemos que usar GraphQL para guardar nuestros datos: Escribimos una 'query'
+    apara la mutacion (CREATE_ITEM_MUTATION), nos recomienda exportarlos (named exports),
+    vamos al backend y miramos en schema.graphql para ver como es el método y copiar sus parametros.
+    Creamos un método wrapper que le pasa la varibale a la mutacion y luego retornamos los campos
+    que queramos.
+
+    Ahora tenemos que exponer esa mutacion con nuestro Componente Mutation. Wes prefiere mandar
+    las variables en el mismo Mutation. El hijo de esta Mutation es una funcion.
+    Implicit return ( ()). Metemos el Formulario dentro del componente Mutation
+
+-4.5 Uploading Images
+
+Vamos a usar Cloudinary para subir las imagenes a un servidor remoto, podemos
+usar el nuestro o Amazon S3. Le gusta al creador.
+TODO: Estudiar funcionamiento y precios. Tenemos 10GB for free. Y referral program
+Metemos un preset para aplicar transformaciones a las imagenes.
+
+Vamos a subir un método que nos maneje todas las subidas de nuestras imágenes
+
+Hacemos el formulario de subida de imagees (TODO: comprobar y añadir muchos cambios a esto)
+
+-4.6 Uploading Items with Queries and Mutations - Creamos un query y una mutacion
+en el backend para item y updateItem.
+Creamos la página UpdateItem para actualizar cosas TODO: Actualizar imagenes
+
+-4.7 Delete
+
+- Vemos que con Apollo se ha borrado del cache un elemento pero tenemos que borrarlo
+  de la caché. Vamos a usar uno de los 3 argumentos de la mutacion, update
+  TODO: Read Apollo doc for updating cache
+  TODO: borrar la imagen del servidor cuando borramos un artículo
+
+- 4.8 Display Items
+  Sabemos que nos falta el detalle de un item (lo vemos al crear uno nuevo y ver
+  el error en la nueva página de redirección). El backend lo tenemos listo.
+  Creamos el item.js y el SingleItem, no tiene muchas novedades. Nos indica como
+  cambiar el título de la página con sideeffects (con next) Nos cuenta como sobreescribir
+  los Head con next. Podemos tener múltiples tags de Head con los que vamos sobreescribiendo
+  el Head definido en Meta.
+
+-4.9 Pagination
+Creamos un componente y nos habla del backend de las consultas itemsConnection que es
+la que nos da mas informacion para la paginacion: Nos devuelve el ItemConnection:
+"""Information to aid in pagination."""
+pageInfo: PageInfo!
+
+"""A list of edges."""
+edges: [ItemEdge]!
+aggregate: AggregateItem!
+}
+pageInfo y edges es bueno para infinite pagination
+//TODO: Hacer infinite pagination
+En la pagiancion en los botones de Link nos dice que pongamos un 'prefetch'
+para que nos haga un pre-render de las previous y next pages, (solo funciona
+en producción)
+Hemos conseguido que funcione nuestro pagiandor con las urls pero no nos
+actualiza los items, eso en el siguiente punto.
+
+-4.10: Pagination and Cache Invalidation
+Tenemos que tocar en el backend el query de items. Arreglamos para pasar
+skip, first y poder paginar.
+Cuando añadimos un nuevo item, no lo vemos en el catálogo porque ya está cacheada
+la página, necesitamos invalidar el caché cuando pase eso. (lo mismo va pasar con el
+borrado):
+fetchPolicy="network-only" --> Eso hace que nunca use el caché (no mola porque perdemos
+el caché).
+
+<Query
+query={ALL_ITEMS_QUERY}
+fetchPolicy="network-only"
+variables={{
+      skip: this.props.page * perPage - perPage,
+      first: perPage
+}} >
+
+> Opcion 1. usar el refetchQuery, pero no sabriamos que query usar ..
+> Borrar de cache los elementos del cache y meterlos (por el momento no
+> podemos borrar solo ciertos elementos del caché y borrar todos es horrible ...
+> ) //TODO: En el futuro lo resolveremos xD

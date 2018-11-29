@@ -1,7 +1,6 @@
 const Mutations = {
   createItem: async (parent, args, ctx, info) => {
     // TODO: check if they are logged in
-    console.log("hello");
     const item = await ctx.db.mutation.createItem(
       {
         data: {
@@ -11,6 +10,31 @@ const Mutations = {
       info
     );
     return item;
+  },
+  updateItem: async (parent, args, ctx, info) => {
+    // first take a copy of the updates
+    const updates = { ...args };
+    // remove the ID from the updates;
+    delete updates.id;
+    // run the update method
+    return ctx.db.mutation.updateItem(
+      {
+        data: updates,
+        where: {
+          id: args.id
+        }
+      },
+      info
+    );
+  },
+  deleteItem: async (parent, args, ctx, info) => {
+    const where = { id: args.id };
+    // 1.find the item
+    const item = await ctx.db.query.item({ where }, `{id title}`);
+    //2. check if they own that itme, or have the permissions
+    //TODO:
+    //3. Delete it!
+    return ctx.db.mutation.deleteItem({ where }, info);
   }
 };
 
