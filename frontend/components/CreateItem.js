@@ -28,22 +28,31 @@ const CREATE_ITEM_MUTATION = gql`
 
 class CreateItem extends Component {
   state = {
-    title: "",
-    description: "",
-    image: "",
-    largeImage: "",
-    price: ""
+    item: {
+      title: "",
+      description: "",
+      image: "",
+      largeImage: "",
+      price: ""
+    },
+    error: {}
   };
 
   handleChange = e => {
     const { name, type, value } = e.target;
     const val = val && type === "number" ? parseFloat(value) : value;
-    this.setState({ [name]: val });
+    this.setState({
+      item: {
+        ...this.state.item,
+        [name]: val
+      }
+    });
   };
-
+  //TODO: Lot of work with iamges, show loading when image is uploading
   uploadFile = async e => {
     console.log("upload file ...");
     const files = e.target.files;
+    if (!e.target.files) return;
     const data = new FormData();
     data.append("file", files[0]);
     data.append("upload_preset", "loushop");
@@ -55,23 +64,33 @@ class CreateItem extends Component {
       }
     );
     const file = await res.json();
+    //TODO: Error with maxium files, set waringin message on before loading
+    if (file.error) {
+      this.setState({ error: file.error });
+      return;
+    }
     this.setState({
-      image: file.secure_url,
-      largeImage: file.eager[0].secure_url
+      item: {
+        ...this.state.item,
+        image: file.secure_url,
+        largeImage:
+          file.eager && file.eager.length
+            ? file.eager[0].secure_url
+            : file.secure.url
+      }
     });
   };
   render() {
+    const { item } = this.state;
     return (
-      <Mutation mutation={CREATE_ITEM_MUTATION} variables={this.state}>
+      <Mutation mutation={CREATE_ITEM_MUTATION} variables={item}>
         {/* {(createItem, payload) => { */}
         {/* {(createItem, {loading, error, called, data}) => { */}
         {(createItem, { loading, error }) => (
           <Form
             onSubmit={async e => {
               e.preventDefault();
-              console.log(this.state);
               const res = await createItem();
-              console.log(res);
               Router.push({
                 pathname: "/item",
                 query: { id: res.data.createItem.id }
@@ -79,6 +98,7 @@ class CreateItem extends Component {
             }}
           >
             <Error error={error} />
+            <Error error={this.state.error} />
             <fieldset disabled={loading} aria-busy={loading}>
               <label htmlFor="file">
                 Image
@@ -88,14 +108,11 @@ class CreateItem extends Component {
                   name="file"
                   placeholder="Upoad an image"
                   required
+                  onClick={() => this.setState({ error: {} })}
                   onChange={this.uploadFile}
                 />
-                {this.state.image && (
-                  <img
-                    width="200"
-                    src={this.state.image}
-                    alt="Upload preview"
-                  />
+                {item.image && (
+                  <img width="200" src={item.image} alt="Upload preview" />
                 )}
               </label>
               <label htmlFor="title">
@@ -106,7 +123,7 @@ class CreateItem extends Component {
                   name="title"
                   placeholder="Title"
                   required
-                  value={this.state.title}
+                  value={item.title}
                   onChange={this.handleChange}
                 />
               </label>
@@ -118,7 +135,7 @@ class CreateItem extends Component {
                   name="price"
                   placeholder="Price"
                   required
-                  value={this.state.price}
+                  value={item.price}
                   onChange={this.handleChange}
                 />
               </label>
@@ -129,7 +146,7 @@ class CreateItem extends Component {
                   name="description"
                   placeholder="Description"
                   required
-                  value={this.state.description}
+                  value={item.description}
                   onChange={this.handleChange}
                 />
               </label>
