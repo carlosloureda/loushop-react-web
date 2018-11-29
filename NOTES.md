@@ -99,9 +99,15 @@ para que realmente se una a la DB y podamos trabajar, es un poco liante esta par
 
 -4.5 Uploading Images
 
-- Vamos a usar Cloudinary para subir las imagenes a un servidor remoto, podemos
-  usar el nuestro o Amazon S3. Le gusta al creador.
-  TODO: Estudiar funcionamiento y precios. Tenemos 10GB for free. Y referral program
-  Metemos un preset para aplicar transformaciones a las imagenes.
+Vamos a usar Cloudinary para subir las imagenes a un servidor remoto, podemos
+usar el nuestro o Amazon S3. Le gusta al creador.
+TODO: Estudiar funcionamiento y precios. Tenemos 10GB for free. Y referral program
+Metemos un preset para aplicar transformaciones a las imagenes.
 
-  Vamos a subir un método que nos maneje todas las subidas de nuestras imágenes
+Vamos a subir un método que nos maneje todas las subidas de nuestras imágenes
+
+Hacemos el formulario de subida de imagees (TODO: comprobar y añadir muchos cambios a esto)
+
+-4.6 Uploading Items with Queries and Mutations - Creamos un query y una mutacion
+en el backend para item y updateItem.
+Creamos la página UpdateItem para actualizar cosas TODO: Actualizar imagenes
