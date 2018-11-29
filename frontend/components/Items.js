@@ -32,7 +32,6 @@ class Items extends Component {
   render() {
     return (
       <div>
-        <p>Items!</p>
         <Center>
           <Query query={ALL_ITEMS_QUERY}>
             {({ data, error, loading }) => {
