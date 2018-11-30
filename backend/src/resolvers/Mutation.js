@@ -71,6 +71,10 @@ const Mutations = {
     }
     createAndSetJWTToken(ctx, user.id);
     return user;
+  },
+  signout: async (parent, args, ctx, info) => {
+    ctx.response.clearCookie("token");
+    return { message: "Goodbye!" };
   }
 };
 
