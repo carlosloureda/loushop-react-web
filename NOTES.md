@@ -183,3 +183,16 @@ variables={{
   es un enum y hay que usar el set.
 
   //TODO: fix the playground
+
+### 5.2 User signup in React
+
+### 5.3 Currently Logged in User with MiddleWare and Rejder Props
+
+- Nos muestra el token JWT que hemos colocado en las cookies. Vamos a decodificar
+  el ID para meterlo en todas las peticiones que entren.
+
+- Creamos una consulta me para saber si estoy logueado.
+- Creamos el componente User con el que creamos nuestras propio 'Render Props
+  Component'. Y ese User lo usaremos en el Nav.
+
+### 5.4
