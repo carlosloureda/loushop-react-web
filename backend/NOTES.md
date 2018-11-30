@@ -195,4 +195,10 @@ variables={{
 - Creamos el componente User con el que creamos nuestras propio 'Render Props
   Component'. Y ese User lo usaremos en el Nav.
 
-### 5.4
+### 5.4 Sign in Form and Custom Error Handling
+
+- Vamos a hacer la mutation Signin. Vemos que al loguearnos no aparece nuestro nombre.
+  No es reactivo el Nav, ahora es cuando el refetchQuery dentro de la mutacion nos viene
+  de puta madre:
+  refetchQueries={[{ query: CURRENT_USER_QUERY }]}
+  Y por ello el exportar desde User nos viene genial. (Hacemos lo mismo para Signup)
