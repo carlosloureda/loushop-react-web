@@ -31,4 +31,5 @@ type Query {
     first: Int
     last: Int
   ): ItemConnection!
+  me: User
 }
