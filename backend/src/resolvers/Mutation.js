@@ -1,4 +1,5 @@
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const Mutations = {
   createItem: async (parent, args, ctx, info) => {
@@ -38,7 +39,8 @@ const Mutations = {
     //3. Delete it!
     return ctx.db.mutation.deleteItem({ where }, info);
   },
-  signup: async (parent, args, ctx, ingo) => {
+  signup: async (parent, args, ctx, info) => {
+    console.log(args);
     args.email = args.email.toLowerCase();
     const password = await bcrypt.hash(args.password, 10);
     const user = await ctx.db.mutation.createUser(
