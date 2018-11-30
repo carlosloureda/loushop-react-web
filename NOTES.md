@@ -202,3 +202,5 @@ variables={{
   de puta madre:
   refetchQueries={[{ query: CURRENT_USER_QUERY }]}
   Y por ello el exportar desde User nos viene genial. (Hacemos lo mismo para Signup)
+
+### 5.5 Sign out Button
