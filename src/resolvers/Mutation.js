@@ -53,15 +53,33 @@ const Mutations = {
       },
       info
     );
-
-    const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
-    // Set te jsw as a cookie for the response
-    ctx.response.cookie("token", token, {
-      httpOnly: true, // avoid JS to access the cookie
-      maxAge: 1000 * 60 * 60 * 24 * 365 // 1 year cookie
-    });
+    createAndSetJWTToken(ctx, user.id);
+    return user;
+  },
+  signin: async (parent, { email, password }, ctx, info) => {
+    // 1. check if there is a user with that email
+    const user = await ctx.db.query.user({ where: { email } });
+    if (!user) {
+      //  maybe for dating platforms we shouldn't throw this info
+      throw new Error(`No such user found for email ${email}`);
+    }
+    // 2. check if their password is correct
+    const valid = await bcrypt.compare(password, user.password);
+    // 3. generate JWT token
+    if (!valid) {
+      throw new Error(`Invalid password`);
+    }
+    createAndSetJWTToken(ctx, user.id);
     return user;
   }
+};
+
+createAndSetJWTToken = (ctx, userId) => {
+  const token = jwt.sign({ userId }, process.env.APP_SECRET);
+  ctx.response.cookie("token", token, {
+    httpOnly: true, // avoid JS to access the cookie
+    maxAge: 1000 * 60 * 60 * 24 * 365 // 1 year cookie
+  });
 };
 
 module.exports = Mutations;
