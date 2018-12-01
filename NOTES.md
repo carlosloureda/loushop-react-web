@@ -224,3 +224,23 @@ Vamos a user MailTrap para testear desde Dev ops
 Para producción el usa Postmark ... (yo sendGrid)
 Nos hacemos una cuenta de Mailtrap y metemos las KEYS en .env
 Vamos a usar nodemailer y tambien templates (mjml para react ... : https://mjml.io/) (usa pac y juice en otro curso)
+
+### 5.9 Data Relationshipts
+
+Tenemos que crear una relacion entre el Item y el usuario que lo ha subido para venderlo.
+Añadimos al modelo de Iteme el User y hacemos una relacion en la mutacion para que se guarde:
+user: {
+connect: {
+id: ctx.request.userId
+}
+}
+(He creado un script para cargar datos automaticamente a la BBDD para no tener que ir
+manualmente)
+
+### 5.10 Creating a Gated Sign in Component
+
+### 5.11 Updating Permissions in Local Stage
+
+### 5.12 Updating Permissions on the Server
+
+### 5.13 Locking Down DeleteItem Permissions

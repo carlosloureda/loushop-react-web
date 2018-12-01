@@ -10,7 +10,12 @@ const Items = [
     image:
       "https://res.cloudinary.com/carloslorueda/image/upload/v1543369426/loushop/gwmx6qq79pnpq9k89uza.png",
     largeImage:
-      "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543369426/loushop/gwmx6qq79pnpq9k89uza.png"
+      "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543369426/loushop/gwmx6qq79pnpq9k89uza.png",
+    user: {
+      connect: {
+        id: "cjp3a0en1m6jb0a0380eseb8h"
+      }
+    }
   },
   {
     title: "Elegante gorro mácara romano",
@@ -19,7 +24,12 @@ const Items = [
     image:
       "https://res.cloudinary.com/carloslorueda/image/upload/v1543459317/loushop/nv2ae55j9ctxtzwoew4o.webp",
     largeImage:
-      "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543459317/loushop/nv2ae55j9ctxtzwoew4o.webp"
+      "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543459317/loushop/nv2ae55j9ctxtzwoew4o.webp",
+    user: {
+      connect: {
+        id: "cjp3a0en1m6jb0a0380eseb8h"
+      }
+    }
   },
   {
     title: "Cazadora Adidas",
@@ -28,7 +38,12 @@ const Items = [
     image:
       "https://res.cloudinary.com/carloslorueda/image/upload/v1543508047/loushop/zjtdtblx52m9r6qrmeux.jpg",
     largeImage:
-      "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543508047/loushop/zjtdtblx52m9r6qrmeux.jpg"
+      "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543508047/loushop/zjtdtblx52m9r6qrmeux.jpg",
+    user: {
+      connect: {
+        id: "cjp3a0en1m6jb0a0380eseb8h"
+      }
+    }
   },
   {
     title: "Jersey cool",
@@ -37,7 +52,12 @@ const Items = [
     image:
       "https://res.cloudinary.com/carloslorueda/image/upload/v1543508097/loushop/avbywgotkp68casfnsfq.jpg",
     largeImage:
-      "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543508097/loushop/avbywgotkp68casfnsfq.jpg"
+      "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543508097/loushop/avbywgotkp68casfnsfq.jpg",
+    user: {
+      connect: {
+        id: "cjp3a0en1m6jb0a0380eseb8h"
+      }
+    }
   },
   {
     title: "Camisa leñador",
@@ -46,7 +66,12 @@ const Items = [
     image:
       "https://res.cloudinary.com/carloslorueda/image/upload/v1543508145/loushop/trkoofnzcit9kiqjyff1.jpg",
     largeImage:
-      "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543508145/loushop/trkoofnzcit9kiqjyff1.jpg"
+      "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543508145/loushop/trkoofnzcit9kiqjyff1.jpg",
+    user: {
+      connect: {
+        id: "cjp3a0en1m6jb0a0380eseb8h"
+      }
+    }
   },
   {
     title: "Camiseta Versage",
@@ -55,7 +80,12 @@ const Items = [
     image:
       "https://res.cloudinary.com/carloslorueda/image/upload/v1543508506/loushop/g4louvmkp8ndcsvaqbri.jpg",
     largeImage:
-      "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543508506/loushop/g4louvmkp8ndcsvaqbri.jpg"
+      "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543508506/loushop/g4louvmkp8ndcsvaqbri.jpg",
+    user: {
+      connect: {
+        id: "cjp3a0en1m6jb0a0380eseb8h"
+      }
+    }
   },
   {
     title: "Camisa estampada",
@@ -65,7 +95,12 @@ const Items = [
     image:
       "https://res.cloudinary.com/carloslorueda/image/upload/v1543508728/loushop/a6lohmnqieyjnk75wgcf.jpg",
     largeImage:
-      "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543508728/loushop/a6lohmnqieyjnk75wgcf.jpg"
+      "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543508728/loushop/a6lohmnqieyjnk75wgcf.jpg",
+    user: {
+      connect: {
+        id: "cjp3a0en1m6jb0a0380eseb8h"
+      }
+    }
   },
   {
     title: "Una camiseta cool",
@@ -74,7 +109,12 @@ const Items = [
     image:
       "https://res.cloudinary.com/carloslorueda/image/upload/v1543508933/loushop/ihwqngvzaz57jxdijzya.jpg",
     largeImage:
-      "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543508933/loushop/ihwqngvzaz57jxdijzya.jpg"
+      "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543508933/loushop/ihwqngvzaz57jxdijzya.jpg",
+    user: {
+      connect: {
+        id: "cjp3a0en1m6jb0a0380eseb8h"
+      }
+    }
   },
   {
     title: "Jeresy navideño",
@@ -83,12 +123,18 @@ const Items = [
     image:
       "https://res.cloudinary.com/carloslorueda/image/upload/v1543508983/loushop/chnqzsmmcsrbab0qemax.jpg",
     largeImage:
-      "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543508983/loushop/chnqzsmmcsrbab0qemax.jpg"
+      "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543508983/loushop/chnqzsmmcsrbab0qemax.jpg",
+    user: {
+      connect: {
+        id: "cjp3a0en1m6jb0a0380eseb8h"
+      }
+    }
   }
 ];
 
 const initDevelopmentDatabase = () => {
   initDevItems();
+  console.log(">>>>>>>> END OF DB POPULATING <<<<<<<<");
 };
 
 const initDevItems = async () => {
