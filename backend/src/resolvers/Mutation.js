@@ -1,5 +1,7 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const { randomBytes } = require("crypto");
+const { promisify } = require("util");
 
 const Mutations = {
   createItem: async (parent, args, ctx, info) => {
@@ -72,9 +74,47 @@ const Mutations = {
     createAndSetJWTToken(ctx, user.id);
     return user;
   },
-  signout: async (parent, args, ctx, info) => {
+  signout: (parent, args, ctx, info) => {
     ctx.response.clearCookie("token");
     return { message: "Goodbye!" };
+  },
+  requestReset: async (parent, args, ctx, info) => {
+    //1. Check if this is a real user
+    const user = await ctx.db.query.user({ where: { email: args.email } });
+    if (!user) throw new Error(`No such user forund for email ${args.email}`);
+    // 2. Set a reset token and expiry on that user
+    const resetToken = (await promisify(randomBytes)(20)).toString("hex");
+    const resetTokenExpiry = Date.now + 360000; // 1 hour from now
+    const res = await ctx.db.mutation.updateUser({
+      where: { email: args.email },
+      data: { resetToken, resetTokenExpiry }
+    });
+    // TODO: 3. Email them that reset token
+  },
+  resetPassword: async (parent, args, ctx, info) => {
+    let { password, resetPassword, resetToken } = args;
+    //1. Check if the passwords match
+    if (password !== resetPassword) {
+      throw new Error("Oops! Passwords do not match.");
+    }
+    // 2 Check if its a legit reset token
+    // 3. Check i its expired
+    const [user] = await ctx.db.query.users({
+      where: { resetToken, resetTokenExpiry_gte: Date.now() - 360000 }
+    });
+    if (!user) throw new Error("Not valid reset password link or expired");
+    // 4. Hash their pasword
+    password = await bcrypt.hash(password, 10);
+    // 5. Save the new password to the user and remove old resettoekn
+    const user = await ctx.db.mutation.updateUser({
+      where: { email },
+      data: { password, resetToken: null, resetTokenExpiry: null }
+    });
+    // 6. Generate JWT
+    // 7. Set the JWT cookie
+    createAndSetJWTToken(ctx, user.id);
+    // 8. Return the new user
+    return user;
   }
 };
 
