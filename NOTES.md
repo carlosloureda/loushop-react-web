@@ -204,3 +204,18 @@ variables={{
   Y por ello el exportar desde User nos viene genial. (Hacemos lo mismo para Signup)
 
 ### 5.5 Sign out Button
+
+- Siguiendo los pasos anteriores es sencillo
+
+### 5.6 Backend Password Reset Flow
+
+Nos comenta que la informacion que tenemos en el usuario por defecto creado en el
+prisma.graphql hay datos que no queremos que se vean desde el cliente (el resetToken
+y cosas asi). Lo copiamos al schema.graphql y quitamos lo que no queramos.
+
+Nos enseña que las queries sobre Users tiene mas metodos/filtros que User:
+const [user] = await ctx.db.query.users({ where: { resetToken ...
+
+### 5.7 Frontend Password Reset Flow
+
+### 5.8 Sending Email
