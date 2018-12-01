@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config({ path: ".env" });
 const createServer = require("./createServer");
 const db = require("./db");
-
+const initDevelopmentDatabase = require("./init/db");
 const server = createServer();
 
 // Use express middleware to handle cookies (JWT)
@@ -31,3 +31,5 @@ server.start(
     console.log(`Server is now running on port  ${deets.port}`);
   }
 );
+
+initDevelopmentDatabase();
