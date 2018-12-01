@@ -239,6 +239,9 @@ manualmente)
 
 ### 5.10 Creating a Gated Sign in Component
 
+Componet wrapper para comprobar si está logeado el usuari (PleaseSignin)
+lo utilizamos en la vista de /sell para comprobar que vaya todo ok
+
 ### 5.11 Updating Permissions in Local Stage
 
 ### 5.12 Updating Permissions on the Server
