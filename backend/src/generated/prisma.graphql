@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/carlos-loureda-8b31b2/loushop-backend/dev
-# timestamp: Thu Nov 29 2018 23:46:53 GMT+0100 (CET)
+# timestamp: Sat Dec 01 2018 17:19:10 GMT+0100 (CET)
 
 type AggregateItem {
   count: Int!
