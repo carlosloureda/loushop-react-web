@@ -61,7 +61,7 @@ class Signin extends Component {
               <label htmlFor="password">
                 Password
                 <input
-                  type="papssword"
+                  type="password"
                   name="password"
                   placeholder="password"
                   value={password}
