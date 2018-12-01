@@ -42,7 +42,6 @@ const Mutations = {
     return ctx.db.mutation.deleteItem({ where }, info);
   },
   signup: async (parent, args, ctx, info) => {
-    console.log(args);
     args.email = args.email.toLowerCase();
     const password = await bcrypt.hash(args.password, 10);
     const user = await ctx.db.mutation.createUser(
@@ -92,9 +91,9 @@ const Mutations = {
     // TODO: 3. Email them that reset token
   },
   resetPassword: async (parent, args, ctx, info) => {
-    let { password, resetPassword, resetToken } = args;
+    let { password, confirmPassword, resetToken } = args;
     //1. Check if the passwords match
-    if (password !== resetPassword) {
+    if (password !== confirmPassword) {
       throw new Error("Oops! Passwords do not match.");
     }
     // 2 Check if its a legit reset token
@@ -106,15 +105,15 @@ const Mutations = {
     // 4. Hash their pasword
     password = await bcrypt.hash(password, 10);
     // 5. Save the new password to the user and remove old resettoekn
-    const user = await ctx.db.mutation.updateUser({
-      where: { email },
+    const updatedUser = await ctx.db.mutation.updateUser({
+      where: { email: user.email },
       data: { password, resetToken: null, resetTokenExpiry: null }
     });
     // 6. Generate JWT
     // 7. Set the JWT cookie
-    createAndSetJWTToken(ctx, user.id);
+    createAndSetJWTToken(ctx, updatedUser.id);
     // 8. Return the new user
-    return user;
+    return updatedUser;
   }
 };
 
