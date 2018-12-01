@@ -219,3 +219,8 @@ const [user] = await ctx.db.query.users({ where: { resetToken ...
 ### 5.7 Frontend Password Reset Flow
 
 ### 5.8 Sending Email
+
+Vamos a user MailTrap para testear desde Dev ops
+Para producción el usa Postmark ... (yo sendGrid)
+Nos hacemos una cuenta de Mailtrap y metemos las KEYS en .env
+Vamos a usar nodemailer y tambien templates (mjml para react ... : https://mjml.io/) (usa pac y juice en otro curso)
