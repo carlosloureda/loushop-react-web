@@ -242,8 +242,13 @@ manualmente)
 Componet wrapper para comprobar si está logeado el usuari (PleaseSignin)
 lo utilizamos en la vista de /sell para comprobar que vaya todo ok
 
-### 5.11 Updating Permissions in Local Stage
+### 5.11 Permissions Management
 
-### 5.12 Updating Permissions on the Server
+Vamos a hacer un formulario para manejar los permisos de los usuarios
+Vamos a necesitar meter middleware para tener en el request los permisos del usuario
 
-### 5.13 Locking Down DeleteItem Permissions
+### 5.12 Updating Permissions in Local Stage
+
+### 5.13 Updating Permissions on the Server
+
+### 5.14 Locking Down DeleteItem Permissions
