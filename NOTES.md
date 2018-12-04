@@ -249,6 +249,8 @@ Vamos a necesitar meter middleware para tener en el request los permisos del usu
 
 ### 5.12 Updating Permissions in Local Stage
 
+Creando una vista par aver los permisos
+
 ### 5.13 Updating Permissions on the Server
 
 ### 5.14 Locking Down DeleteItem Permissions
