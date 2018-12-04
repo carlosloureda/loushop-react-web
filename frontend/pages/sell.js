@@ -1,10 +1,12 @@
 import React from "react";
-import Link from "next/link";
+import PleaseSignin from "../components/PleaseSignin";
 import CreateItem from "../components/CreateItem";
 
 const Sell = props => (
   <div>
-    <CreateItem />
+    <PleaseSignin>
+      <CreateItem />
+    </PleaseSignin>
   </div>
 );
 export default Sell;

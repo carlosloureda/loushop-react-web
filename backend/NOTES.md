@@ -165,4 +165,95 @@ variables={{
 > Opcion 1. usar el refetchQuery, pero no sabriamos que query usar ..
 > Borrar de cache los elementos del cache y meterlos (por el momento no
 > podemos borrar solo ciertos elementos del caché y borrar todos es horrible ...
-> ) //TODO: En el futuro lo resolveremos xD
+> ) //TODO En el futuro lo resolveremos asdasd
+
+## Módulo 5. Client Side GraphQL
+
+### 5.1 User Signup and Permission Flow
+
+- Añadimos atributos al type USer en datamodel.prisma, por ejemplo los Permisos,
+  vamos a usar los enumerandos de graphQL. Actualizamos prisma y creamos un nuevo
+  método signup en schema.graphql.
+  TODO: Va a user cookies para mandar el JWT. Podriamos usar local storage en vez
+  de cookies ( lo hace asi porque quiere que se haga server side rendering the
+  la parte del loggedin y con local storage no se hace automatico). Las activa
+  como middleware de express.
+
+  Para añadir un permiso usamos: permissions: { set: ["USER"] } --> asi porque
+  es un enum y hay que usar el set.
+
+  //TODO: fix the playground
+
+### 5.2 User signup in React
+
+### 5.3 Currently Logged in User with MiddleWare and Rejder Props
+
+- Nos muestra el token JWT que hemos colocado en las cookies. Vamos a decodificar
+  el ID para meterlo en todas las peticiones que entren.
+
+- Creamos una consulta me para saber si estoy logueado.
+- Creamos el componente User con el que creamos nuestras propio 'Render Props
+  Component'. Y ese User lo usaremos en el Nav.
+
+### 5.4 Sign in Form and Custom Error Handling
+
+- Vamos a hacer la mutation Signin. Vemos que al loguearnos no aparece nuestro nombre.
+  No es reactivo el Nav, ahora es cuando el refetchQuery dentro de la mutacion nos viene
+  de puta madre:
+  refetchQueries={[{ query: CURRENT_USER_QUERY }]}
+  Y por ello el exportar desde User nos viene genial. (Hacemos lo mismo para Signup)
+
+### 5.5 Sign out Button
+
+- Siguiendo los pasos anteriores es sencillo
+
+### 5.6 Backend Password Reset Flow
+
+Nos comenta que la informacion que tenemos en el usuario por defecto creado en el
+prisma.graphql hay datos que no queremos que se vean desde el cliente (el resetToken
+y cosas asi). Lo copiamos al schema.graphql y quitamos lo que no queramos.
+
+Nos enseña que las queries sobre Users tiene mas metodos/filtros que User:
+const [user] = await ctx.db.query.users({ where: { resetToken ...
+
+### 5.7 Frontend Password Reset Flow
+
+### 5.8 Sending Email
+
+Vamos a user MailTrap para testear desde Dev ops
+Para producción el usa Postmark ... (yo sendGrid)
+Nos hacemos una cuenta de Mailtrap y metemos las KEYS en .env
+Vamos a usar nodemailer y tambien templates (mjml para react ... : https://mjml.io/) (usa pac y juice en otro curso)
+
+### 5.9 Data Relationshipts
+
+Tenemos que crear una relacion entre el Item y el usuario que lo ha subido para venderlo.
+Añadimos al modelo de Iteme el User y hacemos una relacion en la mutacion para que se guarde:
+user: {
+connect: {
+id: ctx.request.userId
+}
+}
+(He creado un script para cargar datos automaticamente a la BBDD para no tener que ir
+manualmente)
+
+### 5.10 Creating a Gated Sign in Component
+
+Componet wrapper para comprobar si está logeado el usuari (PleaseSignin)
+lo utilizamos en la vista de /sell para comprobar que vaya todo ok
+
+### 5.11 Permissions Management
+
+Vamos a hacer un formulario para manejar los permisos de los usuarios
+Vamos a necesitar meter middleware para tener en el request los permisos del usuario
+
+### 5.12 Updating Permissions in Local Stage
+
+Creando una vista par aver los permisos
+
+### 5.13 Updating Permissions on the Server
+
+### 5.14 Locking Down DeleteItem Permissions
+
+Ahora debemos permitir borrar elementos solo a los que posseen ese elemnto
+o a los que tienen permisos.
