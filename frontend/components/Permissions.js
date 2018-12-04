@@ -16,7 +16,7 @@ const possiblePermissions = [
 ];
 
 const UPDATE_PERMISSIONS_MUTATION = gql`
-  mutation updatePermissions($permissions: Permission, $userId: ID!) {
+  mutation updatePermissions($permissions: [Permission], $userId: ID!) {
     updatePermissions(permissions: $permissions, userId: $userId) {
       id
       permissions
@@ -80,15 +80,15 @@ class User extends React.Component {
     permissions: this.props.user.permissions
   };
   handlePermissionChange = e => {
-    const checked = e.target;
+    const checkbox = e.target;
     let updatedPermissions = [...this.state.permissions]; //copy
     // need to add the new permission
-    if (checked.checked) {
-      updatedPermissions.push(checked.value);
+    if (checkbox.checked) {
+      updatedPermissions.push(checkbox.value);
     } else {
       //remove
       updatedPermissions = updatedPermissions.filter(
-        permission => permission !== checked.value
+        permission => permission !== checkbox.value
       );
     }
     this.setState({
@@ -109,7 +109,7 @@ class User extends React.Component {
           <>
             {error && (
               <tr>
-                <td colspan="8">
+                <td colSpan="8">
                   <Error error={error} />
                 </td>
               </tr>
@@ -134,11 +134,7 @@ class User extends React.Component {
                 <SickButton
                   type="button"
                   disabled={loading}
-                  onClick={() => {
-                    console.log("HOLAS");
-                    updatePermissions();
-                    console.log("AdIo");
-                  }}
+                  onClick={updatePermissions}
                 >
                   Updat{loading ? "ing" : "e"}
                 </SickButton>

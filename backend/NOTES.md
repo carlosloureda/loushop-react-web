@@ -254,3 +254,6 @@ Creando una vista par aver los permisos
 ### 5.13 Updating Permissions on the Server
 
 ### 5.14 Locking Down DeleteItem Permissions
+
+Ahora debemos permitir borrar elementos solo a los que posseen ese elemnto
+o a los que tienen permisos.
