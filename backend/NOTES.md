@@ -204,3 +204,56 @@ variables={{
   Y por ello el exportar desde User nos viene genial. (Hacemos lo mismo para Signup)
 
 ### 5.5 Sign out Button
+
+- Siguiendo los pasos anteriores es sencillo
+
+### 5.6 Backend Password Reset Flow
+
+Nos comenta que la informacion que tenemos en el usuario por defecto creado en el
+prisma.graphql hay datos que no queremos que se vean desde el cliente (el resetToken
+y cosas asi). Lo copiamos al schema.graphql y quitamos lo que no queramos.
+
+Nos enseña que las queries sobre Users tiene mas metodos/filtros que User:
+const [user] = await ctx.db.query.users({ where: { resetToken ...
+
+### 5.7 Frontend Password Reset Flow
+
+### 5.8 Sending Email
+
+Vamos a user MailTrap para testear desde Dev ops
+Para producción el usa Postmark ... (yo sendGrid)
+Nos hacemos una cuenta de Mailtrap y metemos las KEYS en .env
+Vamos a usar nodemailer y tambien templates (mjml para react ... : https://mjml.io/) (usa pac y juice en otro curso)
+
+### 5.9 Data Relationshipts
+
+Tenemos que crear una relacion entre el Item y el usuario que lo ha subido para venderlo.
+Añadimos al modelo de Iteme el User y hacemos una relacion en la mutacion para que se guarde:
+user: {
+connect: {
+id: ctx.request.userId
+}
+}
+(He creado un script para cargar datos automaticamente a la BBDD para no tener que ir
+manualmente)
+
+### 5.10 Creating a Gated Sign in Component
+
+Componet wrapper para comprobar si está logeado el usuari (PleaseSignin)
+lo utilizamos en la vista de /sell para comprobar que vaya todo ok
+
+### 5.11 Permissions Management
+
+Vamos a hacer un formulario para manejar los permisos de los usuarios
+Vamos a necesitar meter middleware para tener en el request los permisos del usuario
+
+### 5.12 Updating Permissions in Local Stage
+
+Creando una vista par aver los permisos
+
+### 5.13 Updating Permissions on the Server
+
+### 5.14 Locking Down DeleteItem Permissions
+
+Ahora debemos permitir borrar elementos solo a los que posseen ese elemnto
+o a los que tienen permisos.
