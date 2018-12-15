@@ -257,3 +257,24 @@ Creando una vista par aver los permisos
 
 Ahora debemos permitir borrar elementos solo a los que posseen ese elemnto
 o a los que tienen permisos.
+
+## 6. Shopping Cart
+
+### 6.1. Creating our cart in React
+
+Creamos la modal (sidebar modal) para mostrar el carrito de forma básica en
+Cart.js
+
+### 6.2. Apollo Local State Queries and Mutations
+
+### 6.3. Server Side Add To Cart
+
+### 6.4. Display Cart Items and Tools
+
+### 6.5. Removing Cart Items
+
+### 6.6. Optimistic Response && Cache Updates with Apollo
+
+### 6.7. Animating our Cart Count Component
+
+### 6.8 Dealing with Deleted Items in CartItems
