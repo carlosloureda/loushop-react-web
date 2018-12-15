@@ -276,6 +276,18 @@ resolvers mete la mutación por ejemplo para togglear el varlo de CartOpen
 
 ### 6.3. Server Side Add To Cart
 
+Creamos un tipo de CartItem en el data model de prisma y declaramos la mutacion
+addToCart y el campo cart a User. Relanzamos prisma para que genere el resto
+de elementos (CartItemToUser, CartItemToItem)
+
+Vamos a crear esa mutacion, nos indica que siempre es mejor hacer queries sobre
+elementos plurales más que elementos simples ya que prisma nos da mas formatos
+de búsqueda.
+
+Ahora deberiamos acabar pudiendo darle a añadir un elemento de la tienda al carro
+y ver que el servidor responde perfectamente y en la bbdd en prisma veremos que
+el user tiene datos del cart.
+
 ### 6.4. Display Cart Items and Tools
 
 ### 6.5. Removing Cart Items
