@@ -267,6 +267,13 @@ Cart.js
 
 ### 6.2. Apollo Local State Queries and Mutations
 
+Vamos a usar Apoll Locar State para guardar los datos asi podremos usar nuestros
+datos de servidor en local
+En withData añadimos el Local State y en Cart.js usaremos la directiva @client
+en las mutaciones y consultas que queramos que se hagan solo en el cliente y
+obvien las del servidor. En clientState de withData indicamos los defaults. en
+resolvers mete la mutación por ejemplo para togglear el varlo de CartOpen
+
 ### 6.3. Server Side Add To Cart
 
 ### 6.4. Display Cart Items and Tools
