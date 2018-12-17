@@ -290,6 +290,9 @@ el user tiene datos del cart.
 
 ### 6.4. Display Cart Items and Tools
 
+Vamos a añadir el carrito del usuario en la consulta de user y vamos a mostrar los
+datos del carrito como son nombre iamgen y precio
+
 ### 6.5. Removing Cart Items
 
 ### 6.6. Optimistic Response && Cache Updates with Apollo
