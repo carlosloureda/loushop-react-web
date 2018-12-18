@@ -306,4 +306,9 @@ el cache de Apollo Client además de actualizar la caché
 
 ### 6.7. Animating our Cart Count Component
 
+Vamos a animar el carrito que sale en el Nav para no tener que estar abriendo
+la modal para saber cuantos elementos tenemos.
+ReactTransitionGroup: Nos duplica elmentos, mete uno nuevo con la nueva cuenta
+y elmina el viejo. Ahora transicionamos.
+
 ### 6.8 Dealing with Deleted Items in CartItems
