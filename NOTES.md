@@ -300,6 +300,10 @@ eliminar esto.
 
 ### 6.6. Optimistic Response && Cache Updates with Apollo
 
+Como hay un espacio de tiempo de unos milisegundos desde que elimnamos un item
+hasta que se ve desaparecer vamos a ahcer optimistic reponses para actualizar
+el cache de Apollo Client además de actualizar la caché
+
 ### 6.7. Animating our Cart Count Component
 
 ### 6.8 Dealing with Deleted Items in CartItems
