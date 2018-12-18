@@ -257,3 +257,61 @@ Creando una vista par aver los permisos
 
 Ahora debemos permitir borrar elementos solo a los que posseen ese elemnto
 o a los que tienen permisos.
+
+## 6. Shopping Cart
+
+### 6.1. Creating our cart in React
+
+Creamos la modal (sidebar modal) para mostrar el carrito de forma básica en
+Cart.js
+
+### 6.2. Apollo Local State Queries and Mutations
+
+Vamos a usar Apoll Locar State para guardar los datos asi podremos usar nuestros
+datos de servidor en local
+En withData añadimos el Local State y en Cart.js usaremos la directiva @client
+en las mutaciones y consultas que queramos que se hagan solo en el cliente y
+obvien las del servidor. En clientState de withData indicamos los defaults. en
+resolvers mete la mutación por ejemplo para togglear el varlo de CartOpen
+
+### 6.3. Server Side Add To Cart
+
+Creamos un tipo de CartItem en el data model de prisma y declaramos la mutacion
+addToCart y el campo cart a User. Relanzamos prisma para que genere el resto
+de elementos (CartItemToUser, CartItemToItem)
+
+Vamos a crear esa mutacion, nos indica que siempre es mejor hacer queries sobre
+elementos plurales más que elementos simples ya que prisma nos da mas formatos
+de búsqueda.
+
+Ahora deberiamos acabar pudiendo darle a añadir un elemento de la tienda al carro
+y ver que el servidor responde perfectamente y en la bbdd en prisma veremos que
+el user tiene datos del cart.
+
+### 6.4. Display Cart Items and Tools
+
+Vamos a añadir el carrito del usuario en la consulta de user y vamos a mostrar los
+datos del carrito como son nombre iamgen y precio
+
+### 6.5. Removing Cart Items
+
+Procedemos a crear la mutacion en el backend y el componente del frontend para
+eliminar esto.
+
+### 6.6. Optimistic Response && Cache Updates with Apollo
+
+Como hay un espacio de tiempo de unos milisegundos desde que elimnamos un item
+hasta que se ve desaparecer vamos a ahcer optimistic reponses para actualizar
+el cache de Apollo Client además de actualizar la caché
+
+### 6.7. Animating our Cart Count Component
+
+Vamos a animar el carrito que sale en el Nav para no tener que estar abriendo
+la modal para saber cuantos elementos tenemos.
+ReactTransitionGroup: Nos duplica elmentos, mete uno nuevo con la nueva cuenta
+y elmina el viejo. Ahora transicionamos.
+
+### 6.8 Dealing with Deleted Items in CartItems
+
+Si intentamos borrar un elmento de la tienda que tenemos en el carrito nos salta
+error, y que hacemos si otra persona lo tiene en su carrito?
