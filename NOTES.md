@@ -295,6 +295,9 @@ datos del carrito como son nombre iamgen y precio
 
 ### 6.5. Removing Cart Items
 
+Procedemos a crear la mutacion en el backend y el componente del frontend para
+eliminar esto.
+
 ### 6.6. Optimistic Response && Cache Updates with Apollo
 
 ### 6.7. Animating our Cart Count Component
