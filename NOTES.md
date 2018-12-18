@@ -312,3 +312,6 @@ ReactTransitionGroup: Nos duplica elmentos, mete uno nuevo con la nueva cuenta
 y elmina el viejo. Ahora transicionamos.
 
 ### 6.8 Dealing with Deleted Items in CartItems
+
+Si intentamos borrar un elmento de la tienda que tenemos en el carrito nos salta
+error, y que hacemos si otra persona lo tiene en su carrito?
