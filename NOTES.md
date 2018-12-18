@@ -315,3 +315,16 @@ y elmina el viejo. Ahora transicionamos.
 
 Si intentamos borrar un elmento de la tienda que tenemos en el carrito nos salta
 error, y que hacemos si otra persona lo tiene en su carrito?
+
+## 7. Advanced UI and Code Quality
+
+### 7.1 Cleaning Up This Render Prop Mess
+
+Tenemos varios Queries y varios Mutations anidados y mejor solucionarlo con ReactAdopt.
+Creamos componente Composed, para cargarnos El Mutation y query y meternos en un solo
+componente en Cart.js. Usa el ({render}) para evitar los warnings de que no se pasan
+children a los componentes Mutation, Query y tal.
+
+### 7.2 Search Dropdown Autocomplete
+
+### 7.3 Autocomplete with DownShift
