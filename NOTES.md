@@ -327,4 +327,11 @@ children a los componentes Mutation, Query y tal.
 
 ### 7.2 Search Dropdown Autocomplete
 
+Downshift (paquete buscador de paypal) para busquedar en la web. Es todo funcionalidad,
+no tiene nada de UI, por eso se muestra el poder de las render props.
+
+En este caso nos enseña como acceder directamente a las consultas de Apollo Client
+sin usar render props. No queremos cargar la query de busqueda cada vez que se carge la
+web sino cuando se busque
+
 ### 7.3 Autocomplete with DownShift
