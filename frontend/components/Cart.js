@@ -9,6 +9,7 @@ import User from "./User";
 import CartItem from "./CartItem";
 import calcTotalPrice from "../lib/calcTotalPrice";
 import formatMoney from "../lib/formatMoney";
+import Payment from "./Payment";
 import { adopt } from "react-adopt";
 
 const LOCAL_STATE_QUERY = gql`
@@ -55,10 +56,10 @@ const Cart = () => (
               <CartItem key={cartItem.id} cartItem={cartItem} />
             ))}
           </ul>
-          <footer>
-            <p>{formatMoney(calcTotalPrice(me.cart))}</p>
+          <p>{formatMoney(calcTotalPrice(me.cart))}</p>
+          <Payment>
             <SickButton>Checkout</SickButton>
-          </footer>
+          </Payment>
         </CartStyles>
       );
     }}

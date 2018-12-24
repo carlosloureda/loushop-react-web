@@ -343,7 +343,8 @@ Vamos a hacer el autocompletado de la búsqueda con DownShift
 ### 9.1 Credit Card Processing with Stripe Checkout
 
 Vamos a añadir Stripe a nuestra web, creamos una cuenta 'LouShop' en nuestra cuenta de
-email
+email. Lo que hacemos es cargar el componente por defecto de pago de Stripe (StripeCheckout)
+y mandamos los datos de la tarjeta de crédito al servidor de Stripe para que nos de el token
 
 ### 9.2 Charging Cards on the Server Side
 
