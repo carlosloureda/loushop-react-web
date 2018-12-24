@@ -353,6 +353,8 @@ recuperamos el usuario, recalculamos el total y creamos un cargo en stripe
 
 ### 9.3 Saving Orders to the Database
 
+Debemos convertir los cartItems a orderItems
+
 ### 9.4 Displaying Single Orders
 
 ### 9.5 Orders Page

@@ -28,9 +28,9 @@ const totalItems = cart =>
 const stripePublicKey = "pk_test_h4IkfdNKJXal2GPvNpu3Yzh3";
 
 class Payment extends Component {
-  onToken = (res, createOrder) => {
+  onToken = async (res, createOrder) => {
     console.log("token is: ", res.id);
-    createOrder({
+    const order = await createOrder({
       variables: { token: res.id }
     }).catch(e => alert(e.message));
   };
@@ -46,7 +46,7 @@ class Payment extends Component {
               <StripeCheckout
                 amount={calcTotalPrice(me.cart)}
                 description={`Order of ${totalItems(me.cart)} items`}
-                image={me.cart[0].item.image}
+                image={me.cart && me.cart.length ? me.cart[0].item.image : null}
                 currency="USD"
                 stripeKey={stripePublicKey}
                 email={me.email}
