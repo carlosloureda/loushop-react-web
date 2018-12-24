@@ -348,6 +348,9 @@ y mandamos los datos de la tarjeta de crédito al servidor de Stripe para que no
 
 ### 9.2 Charging Cards on the Server Side
 
+Creamos en el server la mutation para empezar a cobrar la cantidad, en este caso
+recuperamos el usuario, recalculamos el total y creamos un cargo en stripe
+
 ### 9.3 Saving Orders to the Database
 
 ### 9.4 Displaying Single Orders
