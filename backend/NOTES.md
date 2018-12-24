@@ -337,3 +337,18 @@ web sino cuando se busque
 ### 7.3 Autocomplete with DownShift
 
 Vamos a hacer el autocompletado de la búsqueda con DownShift
+
+## 9 (former 8) Credit Card
+
+### 9.1 Credit Card Processing with Stripe Checkout
+
+Vamos a añadir Stripe a nuestra web, creamos una cuenta 'LouShop' en nuestra cuenta de
+email
+
+### 9.2 Charging Cards on the Server Side
+
+### 9.3 Saving Orders to the Database
+
+### 9.4 Displaying Single Orders
+
+### 9.5 Orders Page
