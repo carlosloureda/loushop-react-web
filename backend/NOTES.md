@@ -315,3 +315,25 @@ y elmina el viejo. Ahora transicionamos.
 
 Si intentamos borrar un elmento de la tienda que tenemos en el carrito nos salta
 error, y que hacemos si otra persona lo tiene en su carrito?
+
+## 7. Advanced UI and Code Quality
+
+### 7.1 Cleaning Up This Render Prop Mess
+
+Tenemos varios Queries y varios Mutations anidados y mejor solucionarlo con ReactAdopt.
+Creamos componente Composed, para cargarnos El Mutation y query y meternos en un solo
+componente en Cart.js. Usa el ({render}) para evitar los warnings de que no se pasan
+children a los componentes Mutation, Query y tal.
+
+### 7.2 Search Dropdown Autocomplete
+
+Downshift (paquete buscador de paypal) para busquedar en la web. Es todo funcionalidad,
+no tiene nada de UI, por eso se muestra el poder de las render props.
+
+En este caso nos enseña como acceder directamente a las consultas de Apollo Client
+sin usar render props. No queremos cargar la query de busqueda cada vez que se carge la
+web sino cuando se busque
+
+### 7.3 Autocomplete with DownShift
+
+Vamos a hacer el autocompletado de la búsqueda con DownShift
