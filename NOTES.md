@@ -335,3 +335,5 @@ sin usar render props. No queremos cargar la query de busqueda cada vez que se c
 web sino cuando se busque
 
 ### 7.3 Autocomplete with DownShift
+
+Vamos a hacer el autocompletado de la búsqueda con DownShift
