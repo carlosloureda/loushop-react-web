@@ -5,7 +5,7 @@ const { promisify } = require("util");
 
 const { transport, makeANiceEmail } = require("../mail");
 const { hasPermission } = require("../utils");
-
+const stripe = require("../stripe");
 const Mutations = {
   createItem: async (parent, args, ctx, info) => {
     if (!ctx.request.userId) {
@@ -88,6 +88,7 @@ const Mutations = {
       throw new Error(`Invalid password`);
     }
     createAndSetJWTToken(ctx, user.id);
+    console.log("User: ", user);
     return user;
   },
   signout: (parent, args, ctx, info) => {
@@ -228,6 +229,66 @@ const Mutations = {
       },
       info
     );
+  },
+  createOrder: async (parent, args, ctx, info) => {
+    // !. query crrent user to see if its logged in
+    const { userId } = ctx.request;
+    if (!userId) {
+      throw new Error("You must be logged in to do that");
+    }
+    // 2. calc the price on the server side
+    const user = await ctx.db.query.user(
+      { where: { id: userId } },
+      `{
+        id
+        name
+        email
+        cart {
+          id
+          quantity
+          item { title price id description image largeImage }
+        }
+      }`
+    );
+    const amount = user.cart.reduce(
+      (tally, cartItem) => tally + cartItem.item.price * cartItem.quantity,
+      0
+    );
+    console.log(`going to charge of a total of ${amount}`);
+    // 3. Create the Stripe charge
+    const charge = await stripe.charges.create({
+      amount,
+      currency: "USD",
+      source: args.token
+    });
+    // 4.Conver the CartItems to irderitems
+    const orderItems = user.cart.map(cartItem => {
+      const orderItem = {
+        ...cartItem.item, // copy ...
+        quantity: cartItem.quantity,
+        user: { connect: { id: userId } }
+      };
+      delete orderItem.id;
+      return orderItem;
+    });
+    // 5 create the order
+    const order = await ctx.db.mutation.createOrder({
+      data: {
+        total: charge.amount,
+        charge: charge.id,
+        items: { create: orderItems }, // prima magic (converts orderItems)
+        user: { connect: { id: userId } }
+      }
+    });
+    // 6.clean up -clearusers cart, deletecartItems
+    const cartItemIds = user.cart.map(cartItem => cartItem.id);
+    await ctx.db.mutation.deleteManyCartItems({
+      where: {
+        id_in: cartItemIds
+      }
+    });
+    // 7.return the order to the client
+    return order;
   }
 };
 

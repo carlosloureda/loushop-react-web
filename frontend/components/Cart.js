@@ -9,6 +9,7 @@ import User from "./User";
 import CartItem from "./CartItem";
 import calcTotalPrice from "../lib/calcTotalPrice";
 import formatMoney from "../lib/formatMoney";
+import Payment from "./Payment";
 import { adopt } from "react-adopt";
 
 const LOCAL_STATE_QUERY = gql`
@@ -33,40 +34,40 @@ const Composed = adopt({
 });
 /* eslint-enable */
 
-const Cart = () => {
-  return (
-    <Composed>
-      {({ user, toggleCart, localState }) => {
-        const me = user.data.me;
-        if (!me) return null;
-        return (
-          <CartStyles open={localState.data.cartOpen}>
-            <header>
-              <CloseButton onClick={toggleCart} title="close">
-                &times;
-              </CloseButton>
-              <Supreme>{me.name}'s Cart</Supreme>
-              <p>
-                You have {me.cart.length} item
-                {me.cart.length === 1 ? "" : "s"} in your cart
-              </p>
-            </header>
-            <ul>
-              {me.cart.map(cartItem => (
-                <CartItem key={cartItem.id} cartItem={cartItem} />
-              ))}
-            </ul>
-            <footer>
-              <p>{formatMoney(calcTotalPrice(me.cart))}</p>
+const Cart = () => (
+  <Composed>
+    {({ user, toggleCart, localState }) => {
+      const me = user.data.me;
+      if (!me) return null;
+      return (
+        <CartStyles open={localState.data.cartOpen}>
+          <header>
+            <CloseButton onClick={toggleCart} title="close">
+              &times;
+            </CloseButton>
+            <Supreme>{me.name}'s Cart</Supreme>
+            <p>
+              You have {me.cart.length} item
+              {me.cart.length === 1 ? "" : "s"} in your cart
+            </p>
+          </header>
+          <ul>
+            {me.cart.map(cartItem => (
+              <CartItem key={cartItem.id} cartItem={cartItem} />
+            ))}
+          </ul>
+          <p>{formatMoney(calcTotalPrice(me.cart))}</p>
+          {me.cart.length && (
+            <Payment>
               <SickButton>Checkout</SickButton>
-            </footer>
-          </CartStyles>
-        );
-      }}
-      }
-    </Composed>
-  );
-};
+            </Payment>
+          )}
+        </CartStyles>
+      );
+    }}
+  </Composed>
+);
+
 
 export default Cart;
 export { LOCAL_STATE_QUERY, TOGGLE_CART_MUTATION };

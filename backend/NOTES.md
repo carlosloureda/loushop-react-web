@@ -337,3 +337,29 @@ web sino cuando se busque
 ### 7.3 Autocomplete with DownShift
 
 Vamos a hacer el autocompletado de la búsqueda con DownShift
+
+## 9 (former 8) Credit Card
+
+### 9.1 Credit Card Processing with Stripe Checkout
+
+Vamos a añadir Stripe a nuestra web, creamos una cuenta 'LouShop' en nuestra cuenta de
+email. Lo que hacemos es cargar el componente por defecto de pago de Stripe (StripeCheckout)
+y mandamos los datos de la tarjeta de crédito al servidor de Stripe para que nos de el token
+
+### 9.2 Charging Cards on the Server Side
+
+Creamos en el server la mutation para empezar a cobrar la cantidad, en este caso
+recuperamos el usuario, recalculamos el total y creamos un cargo en stripe
+
+### 9.3 Saving Orders to the Database
+
+Debemos convertir los cartItems a orderItems
+
+### 9.4 Displaying Single Orders
+
+Creamos query para consultar Order y el componente de Orders ...
+
+### 9.5 Orders Page
+
+Vamos a crear la página de pedidos.
+TODO: Paginate orders in order page
