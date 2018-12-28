@@ -36,6 +36,19 @@ const Query = {
     );
     if (!ownsOrder || !hasPermission) throw new Error("You can't see this");
     return order;
+  },
+  orders: async (parent, args, ctx, info) => {
+    const { userId } = ctx.request;
+    if (!userId) throw new Error("You must be logged in!");
+    console.log("userId: ", userId);
+    return ctx.db.query.orders(
+      {
+        where: {
+          user: { id: userId }
+        }
+      },
+      info
+    );
   }
 };
 
