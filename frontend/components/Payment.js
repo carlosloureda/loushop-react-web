@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import StripeCheckout from "react-stripe-checkout";
 import calcTotalPrice from "../lib/calcTotalPrice";
 import User, { CURRENT_USER_QUERY } from "./User";
+import NProgress from "nprogress";
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
+import Router from "next/router";
 
 const CREATE_ORDER_MUTATION = gql`
   mutation createOrder($token: String!) {
@@ -29,10 +31,14 @@ const stripePublicKey = "pk_test_h4IkfdNKJXal2GPvNpu3Yzh3";
 
 class Payment extends Component {
   onToken = async (res, createOrder) => {
-    console.log("token is: ", res.id);
+    NProgress.start();
     const order = await createOrder({
       variables: { token: res.id }
     }).catch(e => alert(e.message));
+    Router.push({
+      pathname: "/order",
+      query: { id: order.data.createOrder.id }
+    });
   };
   render() {
     return (

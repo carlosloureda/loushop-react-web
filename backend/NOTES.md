@@ -357,4 +357,6 @@ Debemos convertir los cartItems a orderItems
 
 ### 9.4 Displaying Single Orders
 
+Creamos query para consultar Order y el componente de Orders ...
+
 ### 9.5 Orders Page

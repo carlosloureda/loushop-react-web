@@ -88,6 +88,7 @@ const Mutations = {
       throw new Error(`Invalid password`);
     }
     createAndSetJWTToken(ctx, user.id);
+    console.log("User: ", user);
     return user;
   },
   signout: (parent, args, ctx, info) => {
