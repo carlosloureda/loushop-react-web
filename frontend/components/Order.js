@@ -66,7 +66,7 @@ class Order extends Component {
               </p>
               <div className="items">
                 {order.items.map(item => (
-                  <div className="order-item" key={order.id}>
+                  <div className="order-item" key={item.id}>
                     <img src={item.image} alt={item.title} />
                     <div className="item-details">
                       <h2>{item.title}</h2>
