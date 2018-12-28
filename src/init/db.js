@@ -13,7 +13,7 @@ const Items = [
       "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543369426/loushop/gwmx6qq79pnpq9k89uza.png",
     user: {
       connect: {
-        id: "cjp3a0en1m6jb0a0380eseb8h"
+        id: "cjq89lo2w4evm0a988euxmp2x"
       }
     }
   },
@@ -27,7 +27,7 @@ const Items = [
       "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543459317/loushop/nv2ae55j9ctxtzwoew4o.webp",
     user: {
       connect: {
-        id: "cjp3a0en1m6jb0a0380eseb8h"
+        id: "cjq89lo2w4evm0a988euxmp2x"
       }
     }
   },
@@ -41,7 +41,7 @@ const Items = [
       "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543508047/loushop/zjtdtblx52m9r6qrmeux.jpg",
     user: {
       connect: {
-        id: "cjp3a0en1m6jb0a0380eseb8h"
+        id: "cjq89lo2w4evm0a988euxmp2x"
       }
     }
   },
@@ -55,7 +55,7 @@ const Items = [
       "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543508097/loushop/avbywgotkp68casfnsfq.jpg",
     user: {
       connect: {
-        id: "cjp3a0en1m6jb0a0380eseb8h"
+        id: "cjq89lo2w4evm0a988euxmp2x"
       }
     }
   },
@@ -69,7 +69,7 @@ const Items = [
       "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543508145/loushop/trkoofnzcit9kiqjyff1.jpg",
     user: {
       connect: {
-        id: "cjp3a0en1m6jb0a0380eseb8h"
+        id: "cjq89lo2w4evm0a988euxmp2x"
       }
     }
   },
@@ -83,7 +83,7 @@ const Items = [
       "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543508506/loushop/g4louvmkp8ndcsvaqbri.jpg",
     user: {
       connect: {
-        id: "cjp3a0en1m6jb0a0380eseb8h"
+        id: "cjq89lo2w4evm0a988euxmp2x"
       }
     }
   },
@@ -98,7 +98,7 @@ const Items = [
       "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543508728/loushop/a6lohmnqieyjnk75wgcf.jpg",
     user: {
       connect: {
-        id: "cjp3a0en1m6jb0a0380eseb8h"
+        id: "cjq89lo2w4evm0a988euxmp2x"
       }
     }
   },
@@ -112,7 +112,7 @@ const Items = [
       "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543508933/loushop/ihwqngvzaz57jxdijzya.jpg",
     user: {
       connect: {
-        id: "cjp3a0en1m6jb0a0380eseb8h"
+        id: "cjq89lo2w4evm0a988euxmp2x"
       }
     }
   },
@@ -126,7 +126,7 @@ const Items = [
       "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543508983/loushop/chnqzsmmcsrbab0qemax.jpg",
     user: {
       connect: {
-        id: "cjp3a0en1m6jb0a0380eseb8h"
+        id: "cjq89lo2w4evm0a988euxmp2x"
       }
     }
   }
@@ -143,6 +143,7 @@ const initDevItems = async () => {
   Items.forEach(async item => {
     await prisma.createItem(item);
   });
+  console.log("[DB populating FINISHED] Items");
 };
 const itemsAreFilled = async () => {
   const items = await prisma.items();
