@@ -411,3 +411,12 @@ git subtree push --prefix frontend heroku-frontend master
 para que heroku nos monte el npm run build (ya que no queremos que la carpeta
 next se comitee a nuestro control de versiones, usamos en package.json: "heroku-postbuild": "next build")
 En package.json tambien al script de start debemos añadirle el puerto: "start": "next start -p \$PORT",
+
+## Resumen
+
+Direccion frontend: https://loushop-react-prod.herokuapp.com/
+Dirección playground: https://loushop-yoga-prod.herokuapp.com/
+
+- Prisma
+- Heroku
+- Now
