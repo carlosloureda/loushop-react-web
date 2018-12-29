@@ -1,5 +1,5 @@
 const { prisma } = require("../generated//prisma-client");
-
+const bcrypt = require("bcryptjs");
 /* Populate items for development*/
 
 const Items = [
@@ -133,15 +133,18 @@ const Items = [
 ];
 
 const initDevelopmentDatabase = async () => {
-  let user = await prisma.createUser({
-    name: "Carlos Lou",
-    email: "carloslouredaparrado@gmail.com",
-    password: "nomeinteresa",
-    resetToken: null,
-    resetTokenExpiry: null,
-    permissions: { set: ["USER", "ADMIN"] }
-  });
-  initDevItems(user.id);
+  try {
+    let user = await prisma.createUser({
+      // name: "Carlos Lou",
+      // email: "carloslouredaparrado@gmail.com",
+      // password: await bcrypt.hash("nomeinteresa", 10),
+      // permissions: { set: ["USER", "ADMIN"] }
+    });
+    console.log("user: ", user);
+    initDevItems(user.id);
+  } catch (error) {
+    console.log("-> error: ", error);
+  }
   console.log(">>>>>>>> END OF DB POPULATING <<<<<<<<");
 };
 
