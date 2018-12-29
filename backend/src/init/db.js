@@ -1,5 +1,5 @@
 const { prisma } = require("../generated//prisma-client");
-
+const bcrypt = require("bcryptjs");
 /* Populate items for development*/
 
 const Items = [
@@ -13,7 +13,7 @@ const Items = [
       "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543369426/loushop/gwmx6qq79pnpq9k89uza.png",
     user: {
       connect: {
-        id: "cjq89lo2w4evm0a988euxmp2x"
+        id: "TO_BE_FILLED"
       }
     }
   },
@@ -27,7 +27,7 @@ const Items = [
       "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543459317/loushop/nv2ae55j9ctxtzwoew4o.webp",
     user: {
       connect: {
-        id: "cjq89lo2w4evm0a988euxmp2x"
+        id: "TO_BE_FILLED"
       }
     }
   },
@@ -41,7 +41,7 @@ const Items = [
       "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543508047/loushop/zjtdtblx52m9r6qrmeux.jpg",
     user: {
       connect: {
-        id: "cjq89lo2w4evm0a988euxmp2x"
+        id: "TO_BE_FILLED"
       }
     }
   },
@@ -55,7 +55,7 @@ const Items = [
       "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543508097/loushop/avbywgotkp68casfnsfq.jpg",
     user: {
       connect: {
-        id: "cjq89lo2w4evm0a988euxmp2x"
+        id: "TO_BE_FILLED"
       }
     }
   },
@@ -69,7 +69,7 @@ const Items = [
       "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543508145/loushop/trkoofnzcit9kiqjyff1.jpg",
     user: {
       connect: {
-        id: "cjq89lo2w4evm0a988euxmp2x"
+        id: "TO_BE_FILLED"
       }
     }
   },
@@ -83,7 +83,7 @@ const Items = [
       "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543508506/loushop/g4louvmkp8ndcsvaqbri.jpg",
     user: {
       connect: {
-        id: "cjq89lo2w4evm0a988euxmp2x"
+        id: "TO_BE_FILLED"
       }
     }
   },
@@ -98,7 +98,7 @@ const Items = [
       "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543508728/loushop/a6lohmnqieyjnk75wgcf.jpg",
     user: {
       connect: {
-        id: "cjq89lo2w4evm0a988euxmp2x"
+        id: "TO_BE_FILLED"
       }
     }
   },
@@ -112,7 +112,7 @@ const Items = [
       "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543508933/loushop/ihwqngvzaz57jxdijzya.jpg",
     user: {
       connect: {
-        id: "cjq89lo2w4evm0a988euxmp2x"
+        id: "TO_BE_FILLED"
       }
     }
   },
@@ -126,21 +126,33 @@ const Items = [
       "https://res.cloudinary.com/carloslorueda/image/upload/c_scale,q_auto,w_1000/v1543508983/loushop/chnqzsmmcsrbab0qemax.jpg",
     user: {
       connect: {
-        id: "cjq89lo2w4evm0a988euxmp2x"
+        id: "TO_BE_FILLED"
       }
     }
   }
 ];
 
-const initDevelopmentDatabase = () => {
-  initDevItems();
+const initDevelopmentDatabase = async () => {
+  try {
+    let user = await prisma.createUser({
+      // name: "Carlos Lou",
+      // email: "carloslouredaparrado@gmail.com",
+      // password: await bcrypt.hash("nomeinteresa", 10),
+      // permissions: { set: ["USER", "ADMIN"] }
+    });
+    console.log("user: ", user);
+    initDevItems(user.id);
+  } catch (error) {
+    console.log("-> error: ", error);
+  }
   console.log(">>>>>>>> END OF DB POPULATING <<<<<<<<");
 };
 
-const initDevItems = async () => {
+const initDevItems = async userId => {
   if (await itemsAreFilled()) return;
   console.log("[DB populating ...] Items");
   Items.forEach(async item => {
+    item.user.connect.id = userId;
     await prisma.createItem(item);
   });
   console.log("[DB populating FINISHED] Items");

@@ -386,37 +386,4 @@ nos dice que nombremos el servicio y la fase del mismo
 
 ### 11.2 Deploying Yoga Server to Heroku or Now
 
-Desde el heroku-cli vamos a crear lo de siempre, git ... y crear la app de heroku.
-Tenemos que crear tb remotes para backend y para frontend ...
-
-la url es la que ha creado heroku por defecto
-git remote add heroku-backend https://git.heroku.com/loushop-yoga-prod.git
-Para subir subcarpetas tenemos que lanzar:
-git subtree push --prefix backend heroku-backend master
-
-# Nos crea todas los datos de node ...
-
-Nos va a petar porque no podemos comitear los environment variables a git y hay que
-ir al site de heroku y actualizarlos allí.
-Para instalar con now (instalamos con npm i now -g) # Queda pendiente arreglarlo
-
 ### 11.3 Deploying Frontend to Heroku and Now
-
-heroku apps:create loushop-react-prod
-
-git remote add heroku-frontend https://git.heroku.com/loushop-react-prod.git
-
-git subtree push --prefix frontend heroku-frontend master
-
-para que heroku nos monte el npm run build (ya que no queremos que la carpeta
-next se comitee a nuestro control de versiones, usamos en package.json: "heroku-postbuild": "next build")
-En package.json tambien al script de start debemos añadirle el puerto: "start": "next start -p \$PORT",
-
-## Resumen
-
-Direccion frontend: https://loushop-react-prod.herokuapp.com/
-Dirección playground: https://loushop-yoga-prod.herokuapp.com/
-
-- Prisma
-- Heroku
-- Now
