@@ -363,3 +363,27 @@ Creamos query para consultar Order y el componente de Orders ...
 
 Vamos a crear la página de pedidos.
 TODO: Paginate orders in order page
+
+## 11. Deployment
+
+En nuestro proyecto tenemos 3 cosas que lanzar :).
+
+- 1.  Prisma Server con BD MySQL
+- 2.  Yoga Server: Resolvers con Mutation and Query Resolvers
+- 3.  React app: next.js
+
+Cogeremos heroku porque nos sirve para todos.
+TODO: Usar AWS.
+
+### 11.1 Desploying a Prisma Server to Heroku
+
+Vamos a usar Prisma para crear el heroku server. Creamos DB en heroku desde alli.
+Tambien creamos otro server en heroku desde Prisma.
+Una vez creados, vemos que no tenemos lanzada nuestra app (nuestra parte de prisma y db)
+npm run deploy -- -n
+Nos pregunta si queremos enlazar al server que acabamos de montar en heroku y luego
+nos dice que nombremos el servicio y la fase del mismo
+
+### 11.2 Deploying Yoga Server to Heroku or Now
+
+### 11.3 Deploying Frontend to Heroku and Now
