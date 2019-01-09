@@ -385,6 +385,15 @@ Creamos un test de ejemplo y lo ejecutamos con npm run test (lo vemos en package
 
 Creamos mocks de funciones, por ejemplo para llamadas a APIs para no tener que esperar.
 
+### 10.3 First Tests and Shallow Rendering
+
+Shallow rendering solo renderiza los componentes padre (podemo ir indicando que entre
+en uno con dive() o que entre en todos los hijos de uno: children ...)
+Snapshot testing nos va a ayudar mas mas adelante. Actualmente si hacemos un test
+y luego cambiamos la estructura del componente tendremos que cambiar todo el test
+
+### 10.4 Snapshot Testing
+
 ## 11. Deployment
 
 En nuestro proyecto tenemos 3 cosas que lanzar :).
