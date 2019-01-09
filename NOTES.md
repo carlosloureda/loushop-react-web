@@ -364,6 +364,23 @@ Creamos query para consultar Order y el componente de Orders ...
 Vamos a crear la página de pedidos.
 TODO: Paginate orders in order page
 
+## 10. Testing
+
+### 10.1. Unit Testing
+
+Jest: Testing framework y test runner (buscar los tests y los ejecuta). Ademas
+aloja 'expect', comprueba valores ...
+
+Enzyme: De AirBnb y nos permite renderizar el componente React y hacer cosas sobre
+ese componente (por shallow rendering o montandolo). Hay un paquete para cada versión
+de React.
+
+Zero Config. Aqui vamos a meter los tests en un unico directorio en vez de crear carpetas
+para compoenentes.
+
+Tenemos una serie de variables globales por lo que no tenemos que importarlas.
+Creamos un test de ejemplo y lo ejecutamos con npm run test (lo vemos en package.json)
+
 ## 11. Deployment
 
 En nuestro proyecto tenemos 3 cosas que lanzar :).
