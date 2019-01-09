@@ -422,6 +422,8 @@ Para hacer snapshots cuando usamos mount no usemos snapshots totaltes ya que nos
 va a meter todo el Mocked Apollo Provider.
 Para coger ciertos elementos en los tests, añade el tag: [data-test= que es buena idea
 
+### 10.6 More Apollo Query Testing
+
 ## 11. Deployment
 
 En nuestro proyecto tenemos 3 cosas que lanzar :).
