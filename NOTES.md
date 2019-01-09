@@ -410,6 +410,17 @@ estructura.
 
 Nos comentan la diferencia entre shallow o montar, lo ideal es montar, porque se
 está usando como lo usaría nuestro usuario y que además se monta todo.
+TODO: mount vs shallow.
+
+Ha creado un paquete (waait) que ahora está siendo usado por Apollo en la documentación
+
+### 10.5 Testing and Mocking Apollo Queries
+
+Vamos a usar una serie de liberías, el testUtils que tiene dummy data para fakeElements
+y tb usamos la librería casual.
+Para hacer snapshots cuando usamos mount no usemos snapshots totaltes ya que nos
+va a meter todo el Mocked Apollo Provider.
+Para coger ciertos elementos en los tests, añade el tag: [data-test= que es buena idea
 
 ## 11. Deployment
 
