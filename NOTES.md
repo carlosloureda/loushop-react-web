@@ -394,6 +394,23 @@ y luego cambiamos la estructura del componente tendremos que cambiar todo el tes
 
 ### 10.4 Snapshot Testing
 
+Nos permite sacar una foto de un componente y nos avisa de si algo ha cambiado.
+No hay que hacer un finding loco como en los casos anteriores.
+Al usar snapshots, dentro de la carpeta **test** tenemos una carpeta **snapshots**
+con el snapshot (item.test.js.snap).
+En cuanto cambie algo nos avisa del error y nos da la opción de ejecutar de nuevo
+la captura.
+
+Para que los snapshots de los componentes sea coherete podemos usar el JSON del
+paquete enzyme-to-json.
+
+Vemos que muchos componentes tienen esqueletos comunes en sus tests: TODO: Buscar
+paquete o crear uno que genere los tests automaticos de cada componente en su
+estructura.
+
+Nos comentan la diferencia entre shallow o montar, lo ideal es montar, porque se
+está usando como lo usaría nuestro usuario y que además se monta todo.
+
 ## 11. Deployment
 
 En nuestro proyecto tenemos 3 cosas que lanzar :).
