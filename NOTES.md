@@ -381,6 +381,10 @@ para compoenentes.
 Tenemos una serie de variables globales por lo que no tenemos que importarlas.
 Creamos un test de ejemplo y lo ejecutamos con npm run test (lo vemos en package.json)
 
+### 10.2. Mocking
+
+Creamos mocks de funciones, por ejemplo para llamadas a APIs para no tener que esperar.
+
 ## 11. Deployment
 
 En nuestro proyecto tenemos 3 cosas que lanzar :).
