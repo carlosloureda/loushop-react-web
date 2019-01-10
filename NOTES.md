@@ -424,6 +424,13 @@ Para coger ciertos elementos en los tests, añade el tag: [data-test= que es bue
 
 ### 10.6 More Apollo Query Testing
 
+### 10.7 Testing Pagination
+
+La paginación tiene una serie de características que no tienen los elementos
+vistos hasta ahora.
+En la teoria daria problemas el router con los prefetch de los Links pero parece
+todo solucionado.
+
 ## 11. Deployment
 
 En nuestro proyecto tenemos 3 cosas que lanzar :).
