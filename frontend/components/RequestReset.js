@@ -21,7 +21,7 @@ class RequestReset extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
   render() {
-    const { name, email, password } = this.state;
+    const { email } = this.state;
     return (
       <Mutation
         mutation={REQUEST_RESET_MUTATION}
@@ -63,3 +63,4 @@ class RequestReset extends Component {
   }
 }
 export default RequestReset;
+export { REQUEST_RESET_MUTATION };
