@@ -21,8 +21,8 @@ const SIGNUP_MUTATION = gql`
 
 class Signup extends Component {
   state = {
-    name: "",
     email: "",
+    name: "",
     password: ""
   };
   saveToState = e => {
@@ -41,7 +41,7 @@ class Signup extends Component {
             method="post"
             onSubmit={async e => {
               e.preventDefault();
-              const a = await signup(); // Apollo gets the erorrs by himself
+              await signup(); // Apollo gets the erorrs by himself
               this.setState({
                 email: "",
                 name: "",
@@ -91,3 +91,4 @@ class Signup extends Component {
   }
 }
 export default Signup;
+export { SIGNUP_MUTATION };

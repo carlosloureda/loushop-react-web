@@ -44,4 +44,4 @@ server.start(
   }
 );
 
-initDevelopmentDatabase();
+// initDevelopmentDatabase();
