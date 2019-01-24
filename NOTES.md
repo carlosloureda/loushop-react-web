@@ -364,6 +364,81 @@ Creamos query para consultar Order y el componente de Orders ...
 Vamos a crear la página de pedidos.
 TODO: Paginate orders in order page
 
+## 10. Testing
+
+### 10.1. Unit Testing
+
+Jest: Testing framework y test runner (buscar los tests y los ejecuta). Ademas
+aloja 'expect', comprueba valores ...
+
+Enzyme: De AirBnb y nos permite renderizar el componente React y hacer cosas sobre
+ese componente (por shallow rendering o montandolo). Hay un paquete para cada versión
+de React.
+
+Zero Config. Aqui vamos a meter los tests en un unico directorio en vez de crear carpetas
+para compoenentes.
+
+Tenemos una serie de variables globales por lo que no tenemos que importarlas.
+Creamos un test de ejemplo y lo ejecutamos con npm run test (lo vemos en package.json)
+
+### 10.2. Mocking
+
+Creamos mocks de funciones, por ejemplo para llamadas a APIs para no tener que esperar.
+
+### 10.3 First Tests and Shallow Rendering
+
+Shallow rendering solo renderiza los componentes padre (podemo ir indicando que entre
+en uno con dive() o que entre en todos los hijos de uno: children ...)
+Snapshot testing nos va a ayudar mas mas adelante. Actualmente si hacemos un test
+y luego cambiamos la estructura del componente tendremos que cambiar todo el test
+
+### 10.4 Snapshot Testing
+
+Nos permite sacar una foto de un componente y nos avisa de si algo ha cambiado.
+No hay que hacer un finding loco como en los casos anteriores.
+Al usar snapshots, dentro de la carpeta **test** tenemos una carpeta **snapshots**
+con el snapshot (item.test.js.snap).
+En cuanto cambie algo nos avisa del error y nos da la opción de ejecutar de nuevo
+la captura.
+
+Para que los snapshots de los componentes sea coherete podemos usar el JSON del
+paquete enzyme-to-json.
+
+Vemos que muchos componentes tienen esqueletos comunes en sus tests: TODO: Buscar
+paquete o crear uno que genere los tests automaticos de cada componente en su
+estructura.
+
+Nos comentan la diferencia entre shallow o montar, lo ideal es montar, porque se
+está usando como lo usaría nuestro usuario y que además se monta todo.
+TODO: mount vs shallow.
+
+Ha creado un paquete (waait) que ahora está siendo usado por Apollo en la documentación
+
+### 10.5 Testing and Mocking Apollo Queries
+
+Vamos a usar una serie de liberías, el testUtils que tiene dummy data para fakeElements
+y tb usamos la librería casual.
+Para hacer snapshots cuando usamos mount no usemos snapshots totaltes ya que nos
+va a meter todo el Mocked Apollo Provider.
+Para coger ciertos elementos en los tests, añade el tag: [data-test= que es buena idea
+
+### 10.6 More Apollo Query Testing
+
+### 10.7 Testing Pagination
+
+La paginación tiene una serie de características que no tienen los elementos
+vistos hasta ahora.
+En la teoria daria problemas el router con los prefetch de los Links pero parece
+todo solucionado.
+
+### 10.8 Testing Mutations
+
+### 10.9 More Apollo Client Mutation Testing
+
+### 10.10 Testing our cart
+
+### 10.11 Testing Order Components
+
 ## 11. Deployment
 
 En nuestro proyecto tenemos 3 cosas que lanzar :).

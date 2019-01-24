@@ -33,7 +33,7 @@ class CreateItem extends Component {
       description: "",
       image: "",
       largeImage: "",
-      price: ""
+      price: 0
     },
     error: {}
   };
@@ -88,6 +88,7 @@ class CreateItem extends Component {
         {/* {(createItem, {loading, error, called, data}) => { */}
         {(createItem, { loading, error }) => (
           <Form
+            data-test="form"
             onSubmit={async e => {
               e.preventDefault();
               const res = await createItem();
