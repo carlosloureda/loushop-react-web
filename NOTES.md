@@ -437,6 +437,8 @@ todo solucionado.
 
 ### 10.10 Testing our cart
 
+### 10.11 Testing Order Components
+
 ## 11. Deployment
 
 En nuestro proyecto tenemos 3 cosas que lanzar :).
