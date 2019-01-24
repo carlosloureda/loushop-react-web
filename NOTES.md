@@ -435,6 +435,8 @@ todo solucionado.
 
 ### 10.9 More Apollo Client Mutation Testing
 
+### 10.10 Testing our cart
+
 ## 11. Deployment
 
 En nuestro proyecto tenemos 3 cosas que lanzar :).
